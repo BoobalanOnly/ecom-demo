@@ -17,7 +17,6 @@ const createOrder = async (req, res) => {
 
 const getOrderByID = async (req, res) => {
   const id = req.params.id;
-  console.log({ id });
   const ord = await orderService.findByID(id);
   if (ord === null) res.status(404).send({ message: 'Order not found' });
   else res.json(ord).send();

@@ -4,8 +4,8 @@ const routes = require('./routes');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
+const errorHandler = require('./middleware/error-handler');
 
-// app.use(dotenv);
 app.use(cors({ origin: '*' }));
 app.use(bodyParser.json());
 
@@ -16,6 +16,8 @@ app.get('/', (req, res) => {
 });
 
 app.use('/', routes);
+
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

@@ -10,28 +10,6 @@ const findByID = (id) => {
   return Order.findOne({ order_id: id });
 };
 
-// const createOrder = async (req, res) => {
-//   const order = new Order(req.body);
-//   const ord = await Order.findOne({ order_id: order.order_id });
-//   if (ord != null)
-//     return res.status(409).send({ message: 'Order already exists' });
-//   console.log({ ord });
-//   res.send({ ord });
-
-//   //   Order.findOne({ order_id: order.order_id }, (err, existingOrder) => {
-//   //     if (err) return res.status(500).send(err);
-
-//   //     if (existingOrder)
-//   //       return res.status(409).send({ message: 'Order already exists' });
-
-//   //     order.save((err, savedOrder) => {
-//   //       if (err) return res.status(500).send(err);
-
-//   //       res.status(201).send(savedOrder);
-//   //     });
-//   //   });
-// };
-
 const getOrderByID = (req, res) => {
   const id = req.params.id;
   Order.findOne({ order_id: id }, (err, order) => {
@@ -55,7 +33,6 @@ const updateOrder = (id, _date) => {
 
 const getOrdersByDate = (_date) => {
   const date = moment(_date, 'YYYY/MM/DD').format('YYYY-MM-DD');
-  console.log({ date });
   return Order.find({ order_date: date });
 };
 
